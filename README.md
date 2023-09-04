@@ -1,2 +1,2 @@
 # linux_commands
- List of common Linux commands
+ List of common Linux (Ubuntu) commands

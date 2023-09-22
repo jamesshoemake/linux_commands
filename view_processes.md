@@ -1,44 +1,45 @@
-# Dynamic Real-Time View of Processes(top)
+# Process Viewing (ps, pstree, pgrep)
 
-## starting top
+## checking if a command is shell built-in or executable file
 
-top
+_rm is /usr/bin/rm_  
+`type rm`  
+_cd is a shell built-in_  
+`type cd`
 
-### top shortcuts while it's running
+## displaying all processes started in the current terminal
 
-_getting help_  
-`h`  
-_manual refresh_  
-`space`  
-_setting the refresh delay in seconds_  
-`d`  
-_quitting top_  
-`q`  
-_display processes of a user_  
-`u`  
-_changing the display for the memory_  
-`m`  
-_individual statistics for each CPU_  
-`1`  
-_highlighting the running process and the sorting column_  
-`x/y`  
-_toggle between bold and text highlighting_  
-`b`  
-_move the sorting column to the left_  
-`<`  
-_move the sorting column to the right_  
-`>`  
-_entering the Field Management screen _  
-`F`  
-_saving top settings_  
-`W`
+`ps`
 
-## running top in batch mode (3 refreshes, 1 second delay)
+## displaying all processes running in the system
 
-top -d 1 -n 3 -b > top_processes.txt
+`ps -ef`  
+`ps aux`
 
-## Interactive process viewer (top alternative)
+_piping to less_  
+`ps aux | less`
 
-_Installing htop_  
-sudo apt update && sudo apt install htop  
-htop
+## sorting by memory and piping to less
+
+`ps aux --sort=%mem | less`
+
+## ASCII art process tree
+
+`ps -ef --forest`
+
+## displaying all processes of a specific user
+
+`ps -f -u username`
+
+## checking if a process called sshd is running
+
+`pgrep -l sshd`  
+`ps -ef | grep sshd`
+
+## displaying a hierarchical tree structure of all running processes
+
+`pstree`
+
+## prevent merging identical branches
+
+`pstree -c`
